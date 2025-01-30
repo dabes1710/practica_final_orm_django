@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Laboratorios</h2>
+<a href="{% url 'crear_laboratorio' %}" class="btn btn-primary">Nuevo Laboratorio</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>País</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for laboratorio in laboratorios %}
+        <tr>
+            <td>{{ laboratorio.nombre }}</td>
+            <td>{{ laboratorio.ciudad }}</td>
+            <td>{{ laboratorio.pais }}</td>
+            <td>
+                <a href="{% url 'editar_laboratorio' laboratorio.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'eliminar_laboratorio' laboratorio.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
